@@ -16,11 +16,12 @@ tar -zxvf *tar.gz
 #rename
 mv nexus-3.52.0-01 nexus
 
-#add user 
-add nexus user : useradd nexus
+#add user
+useradd nexus
 
-#change owners
-change owners (default as root users) : chown -R nexus:nexus nexus sonatype-work
+#change owners (default as root users)
+chown -R nexus:nexus nexus sonatype-work
+
 cd nexus/bin
 
 #remove hash and add user
