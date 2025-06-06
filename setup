@@ -9,7 +9,7 @@ mkdir /app
 cd /app
 
 #nexus download link (https://help.sonatype.com/en/download-archives---repository-manager-3.html)
-SUDO wget https://download.sonatype.com/nexus/3/nexus-3.80.0-06-unix.tar.gz -O nexus.tar.gz
+sudo wget https://download.sonatype.com/nexus/3/nexus-3.80.0-06-unix.tar.gz -O nexus.tar.gz
 
 #untar
 tar -zxvf *tar.gz
