@@ -1,0 +1,66 @@
+1.What is nexus and how to steup ?
+For that, we need 2cpu, 4gb ram are required (t2 medium). And also reguired 20 gb ebs storage(t2 medium)
+
+#java dependency
+yum install java-1.8.0-openjdk -y
+
+#create folder
+mkdir /app
+cd /app
+
+#nexus download link (https://help.sonatype.com/en/download-archives---repository-manager-3.html)
+SUDO wget https://download.sonatype.com/nexus/3/nexus-3.80.0-06-unix.tar.gz -O nexus.tar.gz
+
+#untar
+tar -zxvf *tar.gz
+#rename
+mv nexus-3.52.0-01 nexus
+
+#add user 
+add nexus user : useradd nexus
+
+#change owners
+change owners (default as root users) : chown -R nexus:nexus nexus sonatype-work
+cd nexus/bin
+
+#remove hash and add user
+vim nexus.rc
+#paste the following line
+run_as_user : run_as_user”nexus”
+
+#save and quit
+:wq
+
+#paste the following lines
+vim /etc/systemd/system/nexus.service
+
+[Unit] Description=nexus service 
+After=network.target 
+
+[Service] 
+Type=forking 
+LimitNOFILE=65536 
+User=nexus 
+Group=nexus 
+ExecStart=/app/nexus/bin/nexus start 
+ExecStop=/app/nexus/bin/nexus stop 
+User=nexus 
+Restart=on-abort 
+[Install] 
+WantedBy=multi-user.target
+
+
+#check configuration 
+chkconfig nexus on
+
+#START THE NEXUS
+systemctl start nexus
+
+#CHECK THE STATUS
+systemctl status nexus
+
+#CONNECT TO NEXUS (public:8081)
+#CLICK ON SIGN-IN IT WILL ASKS THE USER NAME & PASSWORD 
+#USERNAME: admin 
+#PASSWORD: 
+cat /app/sonatype-work/nexus3/admin.password 
