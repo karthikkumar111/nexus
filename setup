@@ -16,6 +16,9 @@ tar -zxvf *tar.gz
 #rename
 mv nexus-3.52.0-01 nexus
 
+#check nexus user
+sudo id nexus
+
 #add user
 useradd nexus
 
@@ -30,11 +33,12 @@ vim nexus.rc
 run_as_user : run_as_user”nexus”
 
 #save and quit
-:wq
+:wql
 
 #paste the following lines
 vim /etc/systemd/system/nexus.service
 
+#paste the following lines
 [Unit] Description=nexus service 
 After=network.target 
 
