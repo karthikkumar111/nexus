@@ -1,20 +1,19 @@
-1.What is nexus and how to steup ?
-For that, we need 2cpu, 4gb ram are required (t2 medium). And also reguired 20 gb ebs storage(t2 medium)
+#java dependency,Install Java 17
+sudo yum clean metadata
+sudo yum install java-17-amazon-corretto -y
+sudo java -version
 
-#java dependency
-yum install java-1.8.0-openjdk -y
-
-#create folder
-mkdir /app
-cd /app
+#create directory/change directory
+cd /opt
 
 #nexus download link (https://help.sonatype.com/en/download-archives---repository-manager-3.html)
-sudo wget https://download.sonatype.com/nexus/3/nexus-unix-x86-64-3.79.0-09.tar.gz
+sudo wget https://download.sonatype.com/nexus/3/nexus-3.77.2-02-unix.tar.gz
 
 #untar
-tar -zxvf *tar.gz
+sudo tar -zxvf *tar.gz
+
 #rename
-mv nexus-3.52.0-01 nexus
+mv nexus-3.77.2-02 nexus
 
 #check nexus user
 sudo id nexus
@@ -25,15 +24,14 @@ useradd nexus
 #change owners (default as root users)
 chown -R nexus:nexus nexus sonatype-work
 
-cd nexus/bin
+#change directory to bin
+sudo vim /nexus/bin/nexus.rc
 
-#remove hash and add user
-vim nexus.rc
-#paste the following line
-run_as_user : run_as_user”nexus”
+#paste the lines, remove hash and add user
+run_as_user”nexus”
 
 #save and quit
-:wql
+:wq
 
 #paste the following lines
 vim /etc/systemd/system/nexus.service
@@ -63,6 +61,9 @@ systemctl start nexus
 
 #CHECK THE STATUS
 systemctl status nexus
+
+#restart nexus
+systemctl restart nexus
 
 #CONNECT TO NEXUS (public:8081)
 #CLICK ON SIGN-IN IT WILL ASKS THE USER NAME & PASSWORD 
