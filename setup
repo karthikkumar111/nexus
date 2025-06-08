@@ -56,6 +56,9 @@ WantedBy=multi-user.target
 #check configuration 
 chkconfig nexus on
 
+#enable nexus
+sudo systemctl enable nexus
+
 #START THE NEXUS
 systemctl start nexus
 
