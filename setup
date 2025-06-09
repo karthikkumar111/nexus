@@ -54,7 +54,7 @@ WantedBy=multi-user.target
 
 
 #check configuration 
-chkconfig nexus on
+#chkconfig nexus on
 
 #enable nexus
 sudo systemctl enable nexus
