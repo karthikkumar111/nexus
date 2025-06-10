@@ -65,8 +65,5 @@ systemctl status nexus
 #restart nexus
 systemctl restart nexus
 
-#CONNECT TO NEXUS (public:8081)
-#CLICK ON SIGN-IN IT WILL ASKS THE USER NAME & PASSWORD 
-#USERNAME: admin 
 #PASSWORD: 
 cat /app/sonatype-work/nexus3/admin.password 
