@@ -37,24 +37,21 @@ run_as_user”nexus”
 vim /nexus/etc/systemd/system/nexus.service
 
 #paste the following lines
-[Unit] Description=nexus service 
-After=network.target 
+[Unit]
+Description=Nexus Repository Manager
+After=network.target
 
-[Service] 
-Type=forking 
-LimitNOFILE=65536 
-User=nexus 
-Group=nexus 
-ExecStart=/app/nexus/bin/nexus start 
-ExecStop=/app/nexus/bin/nexus stop 
-User=nexus 
-Restart=on-abort 
-[Install] 
+[Service]
+Type=forking
+LimitNOFILE=65536
+User=nexus
+Group=nexus
+ExecStart=/opt/nexus/bin/nexus start
+ExecStop=/opt/nexus/bin/nexus stop
+Restart=on-abort
+
+[Install]
 WantedBy=multi-user.target
-
-
-#check configuration 
-#chkconfig nexus on
 
 #enable nexus
 sudo systemctl enable nexus
