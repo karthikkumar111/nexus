@@ -71,7 +71,5 @@ echo "=== Step 11: status Nexus service ==="
 sudo systemctl status nexus
 
 echo "=== Installation Complete! ==="
-echo "Access Nexus at: http://<your_server_ip>:8081"
-echo "Default credentials:"
-echo "Username: admin"
-echo "Password file: /opt/sonatype-work/nexus3/admin.password"
+echo "Password file: 
+sudo cat /opt/sonatype-work/nexus3/admin.password"
