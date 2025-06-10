@@ -72,4 +72,4 @@ sudo systemctl status nexus
 
 echo "=== Installation Complete! ==="
 echo "Password file"
-sudo cat /opt/sonatype-work/nexus3/admin.password"
+sudo cat /opt/sonatype-work/nexus3/admin.password
