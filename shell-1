@@ -71,5 +71,5 @@ echo "=== Step 11: status Nexus service ==="
 sudo systemctl status nexus
 
 echo "=== Installation Complete! ==="
-echo "Password file: 
+echo "Password file"
 sudo cat /opt/sonatype-work/nexus3/admin.password"
