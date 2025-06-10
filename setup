@@ -34,7 +34,7 @@ run_as_user”nexus”
 :wq
 
 #paste the following lines
-vim /etc/systemd/system/nexus.service
+vim /nexus/etc/systemd/system/nexus.service
 
 #paste the following lines
 [Unit] Description=nexus service 
